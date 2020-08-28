@@ -95,13 +95,13 @@ Comment.NestedBlock();
 
 ## Sequencing Parsers
 ### Parser Order
-The `Then` combinator applies two parsers in sequence and keeps the results of the second parser. The `Before` combinator applies two parsers in sequence and keeps the results of the second combinator. The `Between` combinator returns the results of the middle parser which is surrounded by two other parsers. 
+The `Then` combinator applies two parsers in sequence and keeps the results of the second parser. The `Before` combinator applies two parsers in sequence and keeps the results of the first combinator. The `Between` combinator returns the results of the middle parser which is surrounded by two other parsers. 
 
 ### Alternatives
 The `Or` combinator provides alternative branches. The results of the first parser are used if it exists, otherwise the other parsers are tried until one of them is successful.
 
 ## Repeating Parsers
-The `ZeroOrMore` combinator repeats the given parser zero or more times and returns a list with the results of all the parsers. The `OneOrMore` combinator is the same as the `ZeroOrMore` combinator except that it requires at least one successful repetition of the parser. Additionally these combinators have a variations `ZeroOrMoreSeparatedBy` and `OneOrMoreSeparatedBy` which repeats a parser, but only as long as a separator exists between successive elements. 
+The `ZeroOrMore` combinator repeats the given parser zero or more times and returns a list with the results of all the parsers. The `OneOrMore` combinator is the same as the `ZeroOrMore` combinator except that it requires at least one successful repetition of the parser. Additionally these combinators have variations `ZeroOrMoreSeparatedBy` and `OneOrMoreSeparatedBy` which repeats a parser, but only as long as a separator exists between successive elements. 
 
 ## Type Conversion
 The `Map` combinator transforms the output of one parser into a different type.
