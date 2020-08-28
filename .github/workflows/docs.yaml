@@ -28,16 +28,6 @@ jobs:
           python3 -m pip install doxybook                     # install doxygen to markdown support
           python3 -m pip install mkdocs-awesome-pages-plugin  # install the awsome pages plugin
 
-      - name: Generate Doxygen
-        uses: mattnotmitt/doxygen-action@v1
-        with:
-          working-directory: '.'
-          doxyfile-path: './Doxyfile'
-
-      - name: Convert Doxygen
-        continue-on-error: true
-        run: doxybook --input doxygen/xml --output docs/doxygen -t mkdocs --ignoreerrors true
-
       - name: Build Site
         run: mkdocs build
 
