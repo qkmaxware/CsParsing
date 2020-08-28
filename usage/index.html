@@ -202,11 +202,11 @@ Literal.Scientific();
 
 <h2 id="sequencing-parsers">Sequencing Parsers</h2>
 <h3 id="parser-order">Parser Order</h3>
-<p>The <code>Then</code> combinator applies two parsers in sequence and keeps the results of the second parser. The <code>Before</code> combinator applies two parsers in sequence and keeps the results of the second combinator. The <code>Between</code> combinator returns the results of the middle parser which is surrounded by two other parsers. </p>
+<p>The <code>Then</code> combinator applies two parsers in sequence and keeps the results of the second parser. The <code>Before</code> combinator applies two parsers in sequence and keeps the results of the first combinator. The <code>Between</code> combinator returns the results of the middle parser which is surrounded by two other parsers. </p>
 <h3 id="alternatives">Alternatives</h3>
 <p>The <code>Or</code> combinator provides alternative branches. The results of the first parser are used if it exists, otherwise the other parsers are tried until one of them is successful.</p>
 <h2 id="repeating-parsers">Repeating Parsers</h2>
-<p>The <code>ZeroOrMore</code> combinator repeats the given parser zero or more times and returns a list with the results of all the parsers. The <code>OneOrMore</code> combinator is the same as the <code>ZeroOrMore</code> combinator except that it requires at least one successful repetition of the parser. Additionally these combinators have a variations <code>ZeroOrMoreSeparatedBy</code> and <code>OneOrMoreSeparatedBy</code> which repeats a parser, but only as long as a separator exists between successive elements. </p>
+<p>The <code>ZeroOrMore</code> combinator repeats the given parser zero or more times and returns a list with the results of all the parsers. The <code>OneOrMore</code> combinator is the same as the <code>ZeroOrMore</code> combinator except that it requires at least one successful repetition of the parser. Additionally these combinators have variations <code>ZeroOrMoreSeparatedBy</code> and <code>OneOrMoreSeparatedBy</code> which repeats a parser, but only as long as a separator exists between successive elements. </p>
 <h2 id="type-conversion">Type Conversion</h2>
 <p>The <code>Map</code> combinator transforms the output of one parser into a different type.</p>
               
