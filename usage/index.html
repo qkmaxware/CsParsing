@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="http://qkmaxware.github.io/CsParsing/usage/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Usage - Qkmaxware.Parsing</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Usage";
+    var mkdocs_page_input_path = "usage.md";
+    var mkdocs_page_url = "/CsParsing/usage/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Qkmaxware.Parsing</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installing/">Installation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Usage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#identifying-specific-characters">Identifying Specific Characters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#identifying-specific-strings">Identifying Specific Strings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parsing-common-types">Parsing Common Types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#boolean">Boolean</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#numbers">Numbers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sequencing-parsers">Sequencing Parsers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#parser-order">Parser Order</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alternatives">Alternatives</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#repeating-parsers">Repeating Parsers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type-conversion">Type Conversion</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Qkmaxware.Parsing</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Usage</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/qkmaxware/CsParsing/edit/master/docs/usage.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="usage">Usage</h1>
+<h2 id="identifying-specific-characters">Identifying Specific Characters</h2>
+<p>Use <code>Character.Any</code> to create a parser that matches any character in the input stream.</p>
+<pre><code class="cs">Character.Any()
+</code></pre>
+
+<p><code>Character.Is</code> can be used to create a parser that matches the character provided via the argument.</p>
+<pre><code class="cs">Character.Is('x')
+</code></pre>
+
+<p><code>Character.IsNot</code> can be used to create a parser matches any character except one provided via the argument.</p>
+<pre><code class="cs">Character.IsNot('u')
+</code></pre>
+
+<p><code>Character.OneOf</code> can be used to create a parser that matches any of the characters provided via the arguments.</p>
+<pre><code class="cs">Character.OneOf('a', 'b', 'c')
+</code></pre>
+
+<p><code>Character.IsNotOneOf</code> can be used to create a parser that matches any character except those provided via the arguments.</p>
+<pre><code class="cs">Character.IsNotOneOf('d', 'e', 'f')
+</code></pre>
+
+<p><code>Character.Letter</code> can be used to match all alphabetical characters.</p>
+<pre><code class="cs">Character.Letter()
+</code></pre>
+
+<p><code>Character.Digit</code> can be used to match all numeric characters.</p>
+<pre><code class="cs">Character.Digit()
+</code></pre>
+
+<p><code>Character.LetterOrDigit</code> can be used to match all alphabetical or numeric characters.</p>
+<pre><code class="cs">Character.LetterOrDigit()
+</code></pre>
+
+<p><code>Character.Whitespace</code> can be used to match any whitespace characters.</p>
+<pre><code class="cs">Character.Whitespace()
+</code></pre>
+
+<h2 id="identifying-specific-strings">Identifying Specific Strings</h2>
+<p>Use <code>String.Is</code> to create parsers that match the exact sequence of characters in the string argument.</p>
+<pre><code class="cs">String.Is(&quot;Dog&quot;)
+</code></pre>
+
+<h2 id="parsing-common-types">Parsing Common Types</h2>
+<p>This library includes some parsers for commonly used programming concepts.</p>
+<h3 id="boolean">Boolean</h3>
+<p><code>Boolean</code> parses boolean truthy values from the literal strings "true" and "false".</p>
+<pre><code class="cs">Literal.Boolean();
+</code></pre>
+
+<h3 id="numbers">Numbers</h3>
+<p>The <code>Whole</code>, <code>Real</code>, and <code>Scientific</code> methods create parsers for parsing numbers from text. <code>Whole</code> parses positive integers including 0. <code>Real</code> parses decimal numbers. <code>Scientific</code> parses numbers in scientific notation where the exponent is provided after the 'e' character.</p>
+<pre><code class="cs">Literal.Whole();
+Literal.Real();
+Literal.Scientific();
+</code></pre>
+
+<p>To parse any number the <code>Number</code> method creates a parser that can parse any of the above numerics formats. </p>
+<pre><code class="cs">Literal.Number();
+</code></pre>
+
+<h3 id="comments">Comments</h3>
+<p>Line comments can be parsed using the <code>Line</code> method. Line comments begin with '//' and end when the line ends.</p>
+<pre><code class="cs">Comment.Line();
+</code></pre>
+
+<p>Block comments can be parsed using the <code>Block</code> method. Block comments begin with '/*' and ends when a '*/' is found. </p>
+<pre><code class="cs">Comment.Block();
+</code></pre>
+
+<p>In certain languages, block comments can be nested. The <code>NestedBlock</code> method creates parsers in which block comments can be nested within each other.</p>
+<pre><code class="cs">Comment.NestedBlock();
+</code></pre>
+
+<h2 id="sequencing-parsers">Sequencing Parsers</h2>
+<h3 id="parser-order">Parser Order</h3>
+<p>The <code>Then</code> combinator applies two parsers in sequence and keeps the results of the second parser. The <code>Before</code> combinator applies two parsers in sequence and keeps the results of the second combinator. The <code>Between</code> combinator returns the results of the middle parser which is surrounded by two other parsers. </p>
+<h3 id="alternatives">Alternatives</h3>
+<p>The <code>Or</code> combinator provides alternative branches. The results of the first parser are used if it exists, otherwise the other parsers are tried until one of them is successful.</p>
+<h2 id="repeating-parsers">Repeating Parsers</h2>
+<p>The <code>ZeroOrMore</code> combinator repeats the given parser zero or more times and returns a list with the results of all the parsers. The <code>OneOrMore</code> combinator is the same as the <code>ZeroOrMore</code> combinator except that it requires at least one successful repetition of the parser. Additionally these combinators have a variations <code>ZeroOrMoreSeparatedBy</code> and <code>OneOrMoreSeparatedBy</code> which repeats a parser, but only as long as a separator exists between successive elements. </p>
+<h2 id="type-conversion">Type Conversion</h2>
+<p>The <code>Map</code> combinator transforms the output of one parser into a different type.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../introduction/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/qkmaxware/CsParsing/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../introduction/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
