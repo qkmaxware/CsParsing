@@ -1,0 +1,15 @@
+site_name: Qkmaxware.Parsing
+site_url: http://qkmaxware.github.io/CsParsing/
+
+docs_dir: docs/
+site_dir: site/
+
+repo_name: GitHub
+repo_url: https://github.com/qkmaxware/CsParsing
+
+theme: 
+  name: readthedocs
+
+plugins:
+  - awesome-pages
+  - search
